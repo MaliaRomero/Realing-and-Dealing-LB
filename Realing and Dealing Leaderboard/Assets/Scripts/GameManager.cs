@@ -343,6 +343,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Out of hand space.");
             winLosePanel.SetActive(true);
             outOfBaitText.gameObject.SetActive(false);
+            Leaderboard.instance.SetLeaderboardEntry(playerController.points);
             fullHandText.text = "Boy howdy, you've reached your fishing quota!\nFinal Catch: " + playerController.points + " Trophy Points!";
         }
         else if(playerController.baitCount <= 0)
@@ -351,6 +352,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Out of bait.");
             winLosePanel.SetActive(true);
             fullHandText.gameObject.SetActive(false);
+            Leaderboard.instance.SetLeaderboardEntry(playerController.points);
             outOfBaitText.text = "Looks like them fishies emptied your tackle box.\n Final Catch: " + playerController.points + " Trophy Points!";
         } else {
             isPlayerTurn = false;  // Set the turn flag to false when ending the turn
@@ -373,4 +375,7 @@ public class GameManager : MonoBehaviour
         UpdateDeckUI();
         UpdateBaitUI(playerController.baitCount);
     }
+
+
 }
+
